@@ -39,7 +39,7 @@ class LocalFilesystemCleaner implements ICleaner
         } elseif (is_dir($path)) {
             foreach (new \FilesystemIterator($path) as $item) {
                 $path = $item->getPathname();
-                if (!in_array(str_replace('\\', '/', $path), $this->ignored)) {
+                if (!in_array(str_replace('\\', '/', $path), $this->ignored, true)) {
                     $this->removeFiles($path);
                 }
             }

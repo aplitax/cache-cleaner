@@ -1,0 +1,25 @@
+{
+    "name": "modette/cache-cleaner",
+    "description": "Cache cleaner for Nette application.",
+    "keywords": ["modette", "nette", "cache cleaner"],
+    "license": "MPL-2.0",
+    "authors": [
+        {
+            "name": "Marek Bartos",
+            "homepage": "https://marek-bartos.cz"
+        }
+    ],
+    "autoload": {
+        "classmap": ["src/"]
+    },
+    "require": {
+        "php": ">=7.1.0",
+        "nette/di": "^2.4.10"
+    },
+    "suggest": {
+        "contributte/console": "Best symfony/console integration into nette/di"
+    },
+    "conflict": {
+        "symfony/console": "<3.3.0"
+    }
+}

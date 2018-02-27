@@ -15,7 +15,7 @@ $ composer require modette/cache-cleaner
 Configuration
 ------------
 
-```neon
+```yaml
 extensions:
     cacheCleaner: Modette\CacheCleaner\DI\CleanerExtension
 

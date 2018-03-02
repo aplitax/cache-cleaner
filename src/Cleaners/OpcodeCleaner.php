@@ -16,7 +16,7 @@ class OpcodeCleaner implements ICleaner
     {
 
         if (function_exists('opcache_reset')) {
-            opcache_reset();
+            @opcache_reset();
         }
     }
 

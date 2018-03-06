@@ -16,9 +16,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - OpcodeCleaner failed when opcache_reset() call was restricted by Zend OPcode API directive "restrict_api"
 
-## 1.0.0 - 2018-02-25
+## [1.0.0] - 2018-02-25
 ### Added
-- Extendable (main) Cleaner (via ICleaner)
+- Extendable (main) CacheCleaner (via ICleaner)
 - Symfony/Console intergration
 - Nette/DI container integration
 - Pluggable cleaners

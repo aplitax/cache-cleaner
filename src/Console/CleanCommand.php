@@ -15,7 +15,7 @@ class CleanCommand extends \Symfony\Component\Console\Command\Command
     /** @var \Modette\CacheCleaner\Cleaner */
     private $cleaner;
 
-    public function __construct(\Modette\CacheCleaner\Cleaner $cleaner)
+    public function __construct(\Modette\CacheCleaner\CacheCleaner $cleaner)
     {
         parent::__construct('cache:clean');
         $this->cleaner = $cleaner;

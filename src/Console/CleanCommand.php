@@ -28,8 +28,9 @@ class CleanCommand extends \Symfony\Component\Console\Command\Command
 
     protected function execute(\Symfony\Component\Console\Input\InputInterface $input, \Symfony\Component\Console\Output\OutputInterface $output)
     {
-        $this->cleaner->clean();
-        $output->writeln('Cache successfully cleaned.');
+        $this->cleaner->clean($output);
+        
+        return 0;
     }
 
 }

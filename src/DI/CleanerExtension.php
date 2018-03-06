@@ -24,9 +24,8 @@ class CleanerExtension extends \Nette\DI\CompilerExtension
         $builder = $this->getContainerBuilder();
 
         $builder->addDefinition($this->prefix('cleaner'))
-            ->setType(\Modette\CacheCleaner\Cleaner::class)
-            ->setFactory(\Modette\CacheCleaner\Cleaner::class, [
-                '@Nette\DI\Container',
+            ->setType(\Modette\CacheCleaner\CacheCleaner::class)
+            ->setFactory(\Modette\CacheCleaner\CacheCleaner::class, [
                 $this->config['cleaners']
         ]);
 

@@ -9,19 +9,50 @@ declare(strict_types = 1);
 
 namespace Modette\CacheCleaner\Cleaners;
 
+use Nette\DI\Container;
+use Symfony\Component\Console\Output\OutputInterface;
+
 class MemcachedCleaner implements ICleaner
 {
 
-    public function clean(\Nette\DI\Container $container): void
-    {
+    /**
+     * @var Container
+     */
+    private $container;
 
+    public function __construct(Container $container)
+    {
+        $this->container = $container;
+    }
+
+    public function clean(?OutputInterface $output = null): void
+    {
         /** @var string[] */
-        $names = $container->findByType(\Memcached::class);
+        $names = $this->container->findByType(\Memcached::class);
+
+        if ($names === []) {
+            if ($output !== null) {
+                $output->writeln('Skipped Memcached cleaning, no Memcached services found in DI container.');
+            }
+            return;
+        }
+
+        if ($output !== null) {
+            $output->writeln('Cleaning Memcached...');
+        }
 
         foreach ($names as $name) {
+            if ($output !== null) {
+                $output->writeln(sprintf('Cleaning Memcached instance %s...', (string) $name), OutputInterface::VERBOSITY_VERBOSE);
+            }
+
             /* @var $memcached \Memcached */
-            $memcached = $container->getService($name);
+            $memcached = $this->container->getService($name);
             $memcached->flush();
+        }
+
+        if ($output !== null) {
+            $output->writeln('<info>Memcached successfully cleaned.</info>');
         }
     }
 

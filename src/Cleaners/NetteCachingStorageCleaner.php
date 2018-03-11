@@ -27,7 +27,7 @@ class NetteCachingStorageCleaner implements ICleaner
 
     public function clean(OutputInterface $output): void
     {
-        /** @var string[] */
+        /** @var int[]|string[] */
         $names = $container->findByType(\Nette\Caching\IStorage::class);
 
         if ($names === []) {

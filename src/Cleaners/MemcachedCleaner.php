@@ -27,7 +27,7 @@ class MemcachedCleaner implements ICleaner
 
     public function clean(OutputInterface $output): void
     {
-        /** @var string[] */
+        /** @var int[]|string[] */
         $names = $this->container->findByType(\Memcached::class);
 
         if ($names === []) {

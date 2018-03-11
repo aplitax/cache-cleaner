@@ -12,7 +12,7 @@ namespace Modette\CacheCleaner\Console;
 class CleanCommand extends \Symfony\Component\Console\Command\Command
 {
 
-    /** @var \Modette\CacheCleaner\Cleaner */
+    /** @var \Modette\CacheCleaner\CacheCleaner */
     private $cleaner;
 
     public function __construct(\Modette\CacheCleaner\CacheCleaner $cleaner)

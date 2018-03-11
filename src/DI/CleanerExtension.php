@@ -29,10 +29,8 @@ class CleanerExtension extends \Nette\DI\CompilerExtension
                 $this->config['cleaners']
         ]);
 
-        if (class_exists(\Symfony\Component\Console\Command\Command::class)) {
-            $builder->addDefinition($this->prefix('command'))
-                ->setType(\Modette\CacheCleaner\Console\CleanCommand::class);
-        }
+        $builder->addDefinition($this->prefix('command'))
+            ->setType(\Modette\CacheCleaner\Console\CleanCommand::class);
     }
 
 }

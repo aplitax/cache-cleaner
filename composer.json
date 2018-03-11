@@ -1,7 +1,7 @@
 {
     "name": "modette/cache-cleaner",
     "description": "Cache cleaner for Nette application.",
-    "keywords": ["modette", "nette", "cache cleaner"],
+    "keywords": ["modette", "nette", "cache clean", "cache purge"],
     "license": "MPL-2.0",
     "authors": [
         {

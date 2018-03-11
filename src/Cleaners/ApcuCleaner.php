@@ -14,25 +14,18 @@ use Symfony\Component\Console\Output\OutputInterface;
 class ApcuCleaner implements ICleaner
 {
 
-    public function clean(?OutputInterface $output = null): void
+    public function clean(OutputInterface $output): void
     {
-
         if (!function_exists('apcu_clear_cache')) {
-            if ($output !== null) {
-                $output->writeln('Skipped APCu cache cleaning, apcu_clear_cache function is not available.');
-            }
+            $output->writeln('Skipped APCu cache cleaning, apcu_clear_cache function is not available.');
             return;
         }
 
-        if ($output !== null) {
-            $output->writeln('Cleaning APCu cache...');
-        }
+        $output->writeln('Cleaning APCu cache...');
 
         apcu_clear_cache();
 
-        if ($output !== null) {
-            $output->writeln('<info>APCu cache successfully cleaned.</info>');
-        }
+        $output->writeln('<info>APCu cache successfully cleaned.</info>');
     }
 
 }

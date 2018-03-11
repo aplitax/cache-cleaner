@@ -37,30 +37,21 @@ class LocalFilesystemCleaner implements ICleaner
         $this->container = $container;
     }
 
-    public function clean(?OutputInterface $output = null): void
+    public function clean(OutputInterface $output): void
     {
         if ($this->directories === []) {
-            if ($output !== null) {
-                $output->writeln('Skipped local filesystem cache cleaning, no directories defined.');
-            }
+            $output->writeln('Skipped local filesystem cache cleaning, no directories defined.');
             return;
         }
 
-        if ($output !== null) {
-            $output->writeln('Cleaning local filesystem cache...');
-        }
+        $output->writeln('Cleaning local filesystem cache...');
 
         foreach ($this->directories as $directory) {
-            if ($output !== null) {
-                $output->writeln(sprintf('Cleaning directory %s...', $directory), OutputInterface::VERBOSITY_VERBOSE);
-            }
-
+            $output->writeln(sprintf('Cleaning directory %s...', $directory), OutputInterface::VERBOSITY_VERBOSE);
             $this->removeFiles($directory);
         }
 
-        if ($output !== null) {
-            $output->writeln('<info>Local filesystem cache successfully cleaned.</info>');
-        }
+        $output->writeln('<info>Local filesystem cache successfully cleaned.</info>');
     }
 
     private function removeFiles(string $path): void

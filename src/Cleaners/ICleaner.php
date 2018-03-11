@@ -12,6 +12,6 @@ namespace Modette\CacheCleaner\Cleaners;
 interface ICleaner
 {
 
-    public function clean(?\Symfony\Component\Console\Output\OutputInterface $output = null): void;
+    public function clean(\Symfony\Component\Console\Output\OutputInterface $output): void;
 
 }

@@ -14,31 +14,23 @@ use Symfony\Component\Console\Output\OutputInterface;
 class ApcCleaner implements ICleaner
 {
 
-    public function clean(?OutputInterface $output = null): void
+    public function clean(OutputInterface $output): void
     {
         if (!function_exists('apc_clear_cache')) {
-            if ($output !== null) {
-                $output->writeln('Skipped APC cache cleaning, apc_clear_cache function is not available.');
-            }
+            $output->writeln('Skipped APC cache cleaning, apc_clear_cache function is not available.');
             return;
         }
 
-        if ($output !== null) {
-            $output->writeln('Cleaning APC cache...');
-            $output->writeln('Cleaning APC system cache...', OutputInterface::VERBOSITY_VERBOSE);
-        }
+        $output->writeln('Cleaning APC cache...');
+        $output->writeln('Cleaning APC system cache...', OutputInterface::VERBOSITY_VERBOSE);
 
         apc_clear_cache(); // system cache
 
-        if ($output !== null) {
-            $output->writeln('Cleaning APC user cache...', OutputInterface::VERBOSITY_VERBOSE);
-        }
+        $output->writeln('Cleaning APC user cache...', OutputInterface::VERBOSITY_VERBOSE);
 
         apc_clear_cache('user'); // user cache
 
-        if ($output !== null) {
-            $output->writeln('<info>APC cache successfully cleaned.</info>');
-        }
+        $output->writeln('<info>APC cache successfully cleaned.</info>');
     }
 
 }

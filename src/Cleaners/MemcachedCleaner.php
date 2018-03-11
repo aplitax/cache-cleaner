@@ -25,35 +25,27 @@ class MemcachedCleaner implements ICleaner
         $this->container = $container;
     }
 
-    public function clean(?OutputInterface $output = null): void
+    public function clean(OutputInterface $output): void
     {
         /** @var string[] */
         $names = $this->container->findByType(\Memcached::class);
 
         if ($names === []) {
-            if ($output !== null) {
-                $output->writeln('Skipped Memcached cleaning, no Memcached services found in DI container.');
-            }
+            $output->writeln('Skipped Memcached cleaning, no Memcached services found in DI container.');
             return;
         }
 
-        if ($output !== null) {
-            $output->writeln('Cleaning Memcached...');
-        }
+        $output->writeln('Cleaning Memcached...');
 
         foreach ($names as $name) {
-            if ($output !== null) {
-                $output->writeln(sprintf('Cleaning Memcached instance %s...', (string) $name), OutputInterface::VERBOSITY_VERBOSE);
-            }
+            $output->writeln(sprintf('Cleaning Memcached instance %s...', (string) $name), OutputInterface::VERBOSITY_VERBOSE);
 
             /* @var $memcached \Memcached */
             $memcached = $this->container->getService($name);
             $memcached->flush();
         }
 
-        if ($output !== null) {
-            $output->writeln('<info>Memcached successfully cleaned.</info>');
-        }
+        $output->writeln('<info>Memcached successfully cleaned.</info>');
     }
 
 }

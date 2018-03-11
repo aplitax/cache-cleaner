@@ -25,26 +25,20 @@ class NetteCachingStorageCleaner implements ICleaner
         $this->container = $container;
     }
 
-    public function clean(?OutputInterface $output = null): void
+    public function clean(OutputInterface $output): void
     {
         /** @var string[] */
         $names = $container->findByType(\Nette\Caching\IStorage::class);
 
         if ($names === []) {
-            if ($output !== null) {
-                $output->writeln('Skipped Nette\Cache\IStorage cleaning, no IStorage services found in DI container.');
-            }
+            $output->writeln('Skipped Nette\Cache\IStorage cleaning, no IStorage services found in DI container.');
             return;
         }
 
-        if ($output !== null) {
-            $output->writeln('Cleaning Nette\Caching\IStorage...');
-        }
+        $output->writeln('Cleaning Nette\Caching\IStorage...');
 
         foreach ($names as $name) {
-            if ($output !== null) {
-                $output->writeln(sprintf('Cleaning storage instance %s...', (string) $name), OutputInterface::VERBOSITY_VERBOSE);
-            }
+            $output->writeln(sprintf('Cleaning storage instance %s...', (string) $name), OutputInterface::VERBOSITY_VERBOSE);
 
             /* @var $storage \Nette\Caching\IStorage */
             $storage = $container->getService($name);
@@ -53,9 +47,7 @@ class NetteCachingStorageCleaner implements ICleaner
             ]);
         }
 
-        if ($output !== null) {
-            $output->writeln('<info>Nette\Caching\IStorage successfully cleaned.</info>');
-        }
+        $output->writeln('<info>Nette\Caching\IStorage successfully cleaned.</info>');
     }
 
 }

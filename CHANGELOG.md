@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Better console integration - cleaners write their current state in console
 ### Changed
-- ICleaner interface - Accepts optional \Symfony\Component\Console\Output\OutputInterface instead of \Nette\DI\Container
+- ICleaner interface - Require \Symfony\Component\Console\Output\OutputInterface instead of \Nette\DI\Container
 - Cleaners get \Nette\DI\Container from DI instead of main cleaner
 - Renamed main Cleaner to CacheCleaner
 - Symfony/Console is now required for it's NullOutput. Usage without console remains unchanged.

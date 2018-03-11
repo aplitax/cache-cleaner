@@ -98,7 +98,7 @@ Add `-v` parameter to display more detailed informations
 ```php
 <?php
 // get Modette\CacheCleaner\CacheCleaner from DI container
-$cleaner->clean();
+$cleaner->clean(new \Symfony\Component\Console\Output\NullOutput());
 ```
 
 ## Creating your own cleaners
@@ -111,7 +111,7 @@ Implement `ICleaner` and register it in cleaners list
 class YourCleaner implements \Modette\CacheCleaner\Cleaners\ICleaner
 {
 
-    public function clean(?\Symfony\Component\Console\Output\OutputInterface $output = null): void
+    public function clean(\Symfony\Component\Console\Output\OutputInterface $output): void
     {
         // clean cache
         // inform about it in console

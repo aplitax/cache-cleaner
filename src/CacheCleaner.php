@@ -20,9 +20,9 @@ class CacheCleaner
         $this->cleaners = $cleaners;
     }
 
-    public function clean(?\Symfony\Component\Console\Output\OutputInterface $output = null): void
+    public function clean(\Symfony\Component\Console\Output\OutputInterface $output): void
     {
-        if ($this->cleaners === [] && $output !== null) {
+        if ($this->cleaners === []) {
             $output->writeln('Cache cleaning skipped, no cleaners defined.');
             return;
         }
@@ -31,9 +31,7 @@ class CacheCleaner
             $cleaner->clean($output);
         }
 
-        if ($output !== null) {
-            $output->writeln('<info>Cache successfully cleaned.</info>');
-        }
+        $output->writeln('<info>Cache successfully cleaned.</info>');
     }
 
 }

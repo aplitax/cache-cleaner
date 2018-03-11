@@ -28,7 +28,7 @@ class NetteCachingStorageCleaner implements ICleaner
     public function clean(OutputInterface $output): void
     {
         /** @var int[]|string[] */
-        $names = $container->findByType(\Nette\Caching\IStorage::class);
+        $names = $this->container->findByType(\Nette\Caching\IStorage::class);
 
         if ($names === []) {
             $output->writeln('Skipped Nette\Cache\IStorage cleaning, no IStorage services found in DI container.');
@@ -41,7 +41,7 @@ class NetteCachingStorageCleaner implements ICleaner
             $output->writeln(sprintf('Cleaning storage instance %s...', (string) $name), OutputInterface::VERBOSITY_VERBOSE);
 
             /* @var $storage \Nette\Caching\IStorage */
-            $storage = $container->getService($name);
+            $storage = $this->container->getService($name);
             $storage->clean([
                 \Nette\Caching\Cache::ALL => true
             ]);

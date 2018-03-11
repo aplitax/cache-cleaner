@@ -14,12 +14,10 @@
     },
     "require": {
         "php": ">=7.1.0",
-        "nette/di": "^2.4.10"
+        "nette/di": "^2.4.10",
+        "symfony/console": "^3.3.0 || ^4.0.0"
     },
     "suggest": {
         "contributte/console": "Best symfony/console integration into nette/di"
-    },
-    "conflict": {
-        "symfony/console": "<3.3.0"
     }
 }

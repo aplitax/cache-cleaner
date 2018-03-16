@@ -122,4 +122,4 @@ class YourCleaner implements \Modette\CacheCleaner\Cleaners\ICleaner
 ```
 
 
-Repository [https://github.com/modette/cache-cleaner](https://github.com/modette/cache-cleaner).
+**Repository of package: [https://github.com/modette/cache-cleaner](https://github.com/modette/cache-cleaner).**

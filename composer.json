@@ -1,23 +1,30 @@
 {
-    "name": "modette/cache-cleaner",
-    "description": "Clean application cache with single command.",
-    "keywords": ["modette", "nette", "cache clean", "cache purge"],
-    "license": "MPL-2.0",
-    "authors": [
-        {
-            "name": "Marek Bartos",
-            "homepage": "https://marek-bartos.cz"
-        }
-    ],
-    "autoload": {
-        "classmap": ["src/"]
-    },
-    "require": {
-        "php": ">=7.1.0",
-        "nette/di": "^2.4.10",
-        "symfony/console": "^3.3.0 || ^4.0.0"
-    },
-    "suggest": {
-        "contributte/console": "Best symfony/console integration into nette/di"
+  "name": "modette/cache-cleaner",
+  "description": "Cache cleaner for Nette application.",
+  "keywords": [
+    "modette",
+    "nette",
+    "cache clean",
+    "cache purge"
+  ],
+  "license": "MPL-2.0",
+  "authors": [
+    {
+      "name": "Marek Bartos",
+      "homepage": "https://marek-bartos.cz"
     }
+  ],
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "require": {
+    "php": ">=7.1.0",
+    "nette/di": "^2.4.10",
+    "symfony/console": "^3.3.0 || ^4.0.0"
+  },
+  "suggest": {
+    "contributte/console": "Best symfony/console integration into nette/di"
+  }
 }
